@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="photo">
+        <span>Image size must be equal 600px</span><br>
+        <input type='file' />
+        
+    </div>
+        <br><img id="myImg" src="#" alt="Image" height=200 width=100>
+       
+   
+   
+
+<script>
+    window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('img'); // $('img')[0]
+          console.log(img.width); 
+          if(Validate(img.width))
+          {
+          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+          }
+         
+      }
+  });
+});
+function Validate(width) { 
+    if(width<600)
+    {
+      alert('Please upload another image')
+      return false;  
+    }
+    else if(width>600){
+        alert('Please crop the image')
+        return false;
+    }
+    else if(width===600)
+    {
+        alert('Image Uploaded Succesful')
+        return true;
+
+    }
+
+}
+
+
+</script>
+
+</body>
+</html>
